@@ -3,26 +3,6 @@ import codes
 from enum import Enum
 from rpi_rf import RFDevice
 
-class ExtendEnum(Enum):
-  def to_int(self):
-    items = [i.value for i in self.__class__]
-    return items.index(self.value)
-
-class Mode(ExtendEnum):
-  AUTO = 'auto'
-  COOL = 'cool'
-  DRY = 'dry'
-  FAN = 'fan_only'
-  OFF = 'off'
-
-class FanMode(ExtendEnum):
-  AUTO = 'auto'
-  HIGH = 'high'
-  MEDIUM = 'medium'
-  LOW = 'low'
-  QUIET = 'quiet'
-
-
 class CMV:
 
   def __init__(self, gpio=17):

@@ -24,8 +24,8 @@ Here is the list of command to publish to set the state of the CMV.
 
 | topic               | payload                        | description                |
 |---------------------|--------------------------------|-----------------------------
-| cmv/fan/toggle      | auto, high, medium, low, quiet | Set the fan mode           |
-| cmv/reset/set       | (Empty)                        | Reset the state of the AC  |
+| cmv/fanrestroom/set | (Empty)                        | Toggle the restroom fan    |
+| cmv/reset/set       | (Empty)                        | Reset the state of the CMV |
 
 On each of these commands, the server publish `cmv/state/get` to return the state of the CMV, the message contains a JSON object.
 

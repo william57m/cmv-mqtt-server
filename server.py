@@ -29,7 +29,7 @@ def on_message(client, userdata, msg):
     client.publish('cmv/state/get', json.dumps(state))
 
   # Update settings
-  if msg.topic == 'cmv/fan/toggle':
+  if msg.topic == 'cmv/fanrestroom/set':
     cmv.toggle_fan_restroom()
   elif msg.topic == 'cmv/reset/set':
     cmv.reset()
@@ -39,7 +39,7 @@ def on_message(client, userdata, msg):
     state = cmv.get_state()
     client.publish('cmv/state/get', json.dumps(state))
 
-# Init AC
+# Init CMV
 cmv = CMV()
 
 # Init MQTT
