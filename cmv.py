@@ -16,7 +16,7 @@ class CMV:
     self.rfdevice.tx_repeat = 10
 
     # Fan timer
-    self.timer_fan_restroom = threading.Timer(15, self.set_state_fan_restroom, args=[False])
+    self.timer_fan_restroom = threading.Timer(60*20, self.set_state_fan_restroom, args=[False])
     self.timer_fan_restroom.daemon = True
 
   def reset(self, commit=True):
