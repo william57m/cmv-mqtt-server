@@ -16,8 +16,8 @@ class CMV:
     self.rfdevice.tx_repeat = 10
 
     # Fan timer
-    self.timer_fan_restroom = threading.Timer(60*20, self.set_state_fan_restroom, args=[False])
-    self.timer_fan_restroom.daemon = True
+    # self.timer_fan_restroom = threading.Timer(60*20, self.set_state_fan_restroom, args=[False])
+    # self.timer_fan_restroom.daemon = True
 
   def reset(self, commit=True):
     self.fan_restroom = False
@@ -31,10 +31,10 @@ class CMV:
   def toggle_fan_restroom(self):
     self.fan_restroom = not self.fan_restroom
 
-    if self.fan_restroom:
-      self.timer_fan_restroom.start()
-    else:
-      self.timer_fan_restroom.cancel()
+    # if self.fan_restroom:
+    #   self.timer_fan_restroom.start()
+    # else:
+    #   self.timer_fan_restroom.cancel()
 
     self.commit(codes.CODE_TOGGLE_RELAY)
 
