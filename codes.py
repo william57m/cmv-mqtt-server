@@ -1,2 +1,0 @@
-# RF codes
-CODE_TOGGLE_RELAY = 450
