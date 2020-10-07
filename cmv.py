@@ -11,7 +11,7 @@ class CMV:
     self.gpio_fan_restroom = gpio_fan_restroom
 
     # Init GPIO
-    GPIO.setmode(GPIO.BOARD)
+    GPIO.setmode(GPIO.BCM)
     GPIO.setup(self.gpio_fan_restroom, GPIO.OUT)
 
     # Fan timer
