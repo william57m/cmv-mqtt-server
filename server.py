@@ -31,6 +31,10 @@ def on_message(client, userdata, msg):
   # Update settings
   if msg.topic == 'cmv/fanrestroom/set':
     cmv.toggle_fan_restroom()
+  if msg.topic == 'cmv/relayhigh/set':
+    cmv.relay_high()
+  if msg.topic == 'cmv/relaylow/set':
+    cmv.relay_low()
   elif msg.topic == 'cmv/reset/set':
     cmv.reset()
 

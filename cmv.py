@@ -1,5 +1,11 @@
-import threading
 import RPi.GPIO as GPIO
+import threading
+import time
+
+def open_close_relay(pin_number, timeout=0.05):
+  GPIO.output(pin_number, GPIO.HIGH)
+  time.sleep(timeout)
+  GPIO.output(pin_number, GPIO.LOW)
 
 
 class CMV:
@@ -8,31 +14,26 @@ class CMV:
     # Init state
     self.reset(False)
 
-    self.gpio_fan_restroom = gpio_fan_restroom
-
     # Init GPIO
+    self.gpio_fan_restroom = gpio_fan_restroom
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(self.gpio_fan_restroom, GPIO.OUT)
 
-    # Fan timer
-    # self.timer_fan_restroom = threading.Timer(60*20, self.set_state_fan_restroom, args=[False])
-    # self.timer_fan_restroom.daemon = True
+  def set_internal_state_fan_restroom(self, state):
+    self.fan_restroom = state
 
-  # def set_state_fan_restroom(self, state):
-  #   self.fan_restroom = state
+  def relay_high(self):
+    GPIO.output(self.gpio_fan_restroom, GPIO.HIGH)
+
+  def relay_low(self):
+    GPIO.output(self.gpio_fan_restroom, GPIO.LOW)
 
   def reset(self, commit=True):
     self.fan_restroom = False
 
   def toggle_fan_restroom(self):
     self.fan_restroom = not self.fan_restroom
-    output = GPIO.HIGH if self.fan_restroom else GPIO.LOW
-    GPIO.output(self.gpio_fan_restroom, output)
-
-    # if self.fan_restroom:
-    #   self.timer_fan_restroom.start()
-    # else:
-    #   self.timer_fan_restroom.cancel()
+    open_close_relay(self.gpio_fan_restroom)
 
   def get_state(self, key=None):
     result = {
