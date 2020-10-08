@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import threading
 import time
 
-def open_close_relay(pin_number, timeout=0.05):
+def open_close_relay(pin_number, timeout=0.2):
   GPIO.output(pin_number, GPIO.HIGH)
   time.sleep(timeout)
   GPIO.output(pin_number, GPIO.LOW)
