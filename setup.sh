@@ -7,7 +7,7 @@ After=network.target
 
 [Service]
 User=root
-ExecStart=/usr/bin/python3 /home/pi/cmv-mqtt-server/server.py
+ExecStart=/usr/bin/python3 /home/pi/cmv-mqtt-server/src/server.py
 
 [Install]
 WantedBy=multi-user.target" > "$service_path"

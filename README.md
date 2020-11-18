@@ -1,10 +1,16 @@
 # MQTT Server to communicate with relay
 
-## Setup
+## Regular installation
 
+Clone the repository
 ```bash
 git clone git@github.com:william57m/cmv-mqtt-server.git
 cd cmv-mqtt-server
+```
+
+Install the requirements
+```
+pip install -r requirements.txt
 ```
 
 Run it as a service
@@ -15,7 +21,14 @@ sudo systemctl start cmv.service
 
 Run it manually
 ```bash
-python3 server.py
+python3 src/server.py
+```
+
+## Installation with docker
+
+Run is with docker
+```
+
 ```
 
 ## MQTT Commands
