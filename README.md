@@ -26,9 +26,25 @@ python3 src/server.py
 
 ## Installation with docker
 
-Run is with docker
+Run with docker
+```
+docker pull william57m/cmv-mqtt-server
+docker run \
+  --device /dev/gpiomem \
+  -e MQTT_HOST='192.168.2.110' \
+  william57m/cmv-mqtt-server:latest
 ```
 
+## Build and publish
+
+Build
+```
+docker build --tag william57m/cmv-mqtt-server .
+```
+
+Deploy
+```
+docker push william57m/cmv-mqtt-server
 ```
 
 ## MQTT Commands

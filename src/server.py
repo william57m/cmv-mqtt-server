@@ -1,13 +1,16 @@
 import json
-import paho.mqtt.client as mqtt
+import os
 import re
+import paho.mqtt.client as mqtt
 
 from cmv import CMV
 
-# MQTT Settings
-mqtt_host = 'localhost'
-mqtt_port = 1883
+# Extract MQTT config
+VARS = {k: v for k, v in os.environ.items()}
 
+# MQTT Settings
+mqtt_host = VARS['MQTT_HOST'] if 'MQTT_HOST' in VARS else 'localhost'
+mqtt_port = VARS['MQTT_PORT'] if 'MQTT_PORT' in VARS else '1883'
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -50,7 +53,7 @@ cmv = CMV()
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
-client.connect(mqtt_host, mqtt_port, 60)
+client.connect(mqtt_host, int(mqtt_port), 60)
 
 # Blocking call that processes network traffic, dispatches callbacks and
 # handles reconnecting.
