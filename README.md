@@ -28,7 +28,6 @@ python3 src/server.py
 
 Run with docker
 ```
-docker pull william57m/cmv-mqtt-server
 docker run \
   --device /dev/gpiomem \
   -e MQTT_HOST='192.168.2.110' \
