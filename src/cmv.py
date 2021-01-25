@@ -1,6 +1,9 @@
 import RPi.GPIO as GPIO
-import threading
 import time
+import smbus
+
+bus_address = 0x48
+bus = smbus.SMBus(1)
 
 def open_close_relay(pin_number, timeout=0.2):
   GPIO.output(pin_number, GPIO.HIGH)
@@ -13,6 +16,7 @@ class CMV:
   def __init__(self, gpio_fan_restroom=22):
     # Init state
     self.reset(False)
+    self.read_state()
 
     # Init GPIO
     self.gpio_fan_restroom = gpio_fan_restroom
@@ -40,4 +44,8 @@ class CMV:
       'fan_restroom': 'on' if self.fan_restroom else 'off',
     }
     return result[key] if key else result
+
+  def read_state(self):
+    value = bus.read_byte(bus_address)
+    print(value)
 
