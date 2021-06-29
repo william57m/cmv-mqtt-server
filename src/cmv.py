@@ -47,5 +47,6 @@ class CMV:
 
   def read_state(self):
     value = bus.read_byte(bus_address)
+    print('READ STATE:')
     print(value)
 

@@ -24,15 +24,21 @@ Run it manually
 python3 src/server.py
 ```
 
-## Installation with docker
+## Usage with docker
 
 Run with docker
 ```
 docker run \
+  -d \
+  --restart always \
+  --privileged \
   --device /dev/gpiomem \
+  --name cmv-mqtt-server \
   -e MQTT_HOST='192.168.2.110' \
   william57m/cmv-mqtt-server:latest
 ```
+
+`--privileged` option gives access to the docker image the GPIO.
 
 ## Build and publish
 
